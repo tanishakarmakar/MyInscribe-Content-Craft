@@ -54,7 +54,7 @@ python run.py #start the backend server
 If the path to the Llama model changes, update it in backend/app/ai.py, line 11
 
 # Run the frontend
-Go to the frontend/ folder directory and run this command:  
+Go to the MyInscribe-Content-Craft/frontend directory and run this command:  
 npm start
 
 # You are Ready!
