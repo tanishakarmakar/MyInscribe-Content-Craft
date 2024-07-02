@@ -18,12 +18,10 @@ This repository contains a content generation and optimization application using
   - pip
 # Setup Instructions:
 ## Cloning the Repository:
-First, clone the repository to your local machine:
+First, clone the repository to your local machine:<br/>
     ```shell
-    git clone https://github.com/your-username/content-generation-app.git
+    git clone https://github.com/your-username/content-generation-app.git <br/>
     cd MyInscribe-Content-Craft/backend
     ```<br/>
-    ```shell
-    cd MyInscribe-Content-Craft/backend
-    ```
+    
 
