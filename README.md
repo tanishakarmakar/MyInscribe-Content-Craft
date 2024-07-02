@@ -1,4 +1,5 @@
 # MyInscribe-Content-Craft
+## AI-Based Content Workflow Automation Project
 
 This repository contains a content generation and optimization application using various AI models and tools. Follow the instructions below to set up and run the application.
 
