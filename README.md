@@ -21,10 +21,8 @@ This repository contains a content generation and optimization application using
 First, clone the repository to your local machine:<br/>
     ```
     git clone https://github.com/your-username/content-generation-app.git 
-    cd MyInscribe-Content-Craft/backend
     ``` <br/>
-     ```
-    git clone https://github.com/your-username/content-generation-app.git 
+     ``` 
     cd MyInscribe-Content-Craft/backend
     ```
     
