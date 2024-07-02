@@ -20,7 +20,7 @@ This repository contains a content generation and optimization application using
 ## Cloning the Repository:
 First, clone the repository to your local machine:<br/>
     ```
-    git clone [https://github.com/your-username/content-generation-app.git](https://github.com/tanishakarmakar/MyInscribe-Content-Craft.git) 
+    git clone https://github.com/tanishakarmakar/MyInscribe-Content-Craft.git 
     ``` <br/>
      ``` 
     cd MyInscribe-Content-Craft/backend
