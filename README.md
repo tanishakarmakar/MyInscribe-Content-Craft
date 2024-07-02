@@ -23,4 +23,7 @@ First, clone the repository to your local machine:
     git clone https://github.com/your-username/content-generation-app.git
     cd MyInscribe-Content-Craft/backend
     ```
+    ```shell
+    cd MyInscribe-Content-Craft/backend
+    ```
 
