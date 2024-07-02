@@ -22,8 +22,17 @@ First, clone the repository to your local machine:<br/>
     ```
     git clone https://github.com/tanishakarmakar/MyInscribe-Content-Craft.git 
     ``` <br/>
-     ``` 
-    cd MyInscribe-Content-Craft/backend
+     ```cd MyInscribe-Content-Craft/backend
     ```
+## Creating a Virtual Environment
+Create and activate a virtual environment:  
+# For Windows  
+python -m venv env  
+env\Scripts\activate
+
+# For macOS/Linux  
+python3 -m venv env  
+source env/bin/activate  
+
     
 
