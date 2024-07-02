@@ -13,12 +13,12 @@ This repository contains a content generation and optimization application using
 4. Updating Model Path
 5. Usage
 # Prerequisites:
-  -Python 3.8 or higher
-  -Git
-  -pip
+  - Python 3.8 or higher
+  - Git
+  - pip
 # Setup Instructions:
 ## Cloning the Repository:
 First, clone the repository to your local machine:
-    git clone https://github.com/your-username/content-generation-app.git
-    cd MyInscribe-Content-Craft/backend
+    *git clone https://github.com/your-username/content-generation-app.git
+    *cd MyInscribe-Content-Craft/backend
 
