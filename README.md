@@ -5,10 +5,10 @@ This repository contains a content generation and optimization application using
 # Table of Contents:
 1. Prerequisites
 2. Setup Instructions
-    -Cloning the Repository
-    -Creating a Virtual Environment
-    -Installing Dependencies
-    -Downloading AI Models
+    - Cloning the Repository
+    - Creating a Virtual Environment
+    - Installing Dependencies
+    - Downloading AI Models
 3. Running the Application
 4. Updating Model Path
 5. Usage
