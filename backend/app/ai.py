@@ -5,12 +5,20 @@ from collections import Counter
 import re
 import language_tool_python
 from llama_cpp import Llama
+import os
 
-# Initialize Llama model
-llm = Llama(
-    model_path="./models/7B/llama-2-7b-chat.Q4_K_M.gguf",
-    n_gpu_layers=50
-)
+# Define the model path
+model_path = "./models/7B/llama-2-7b-chat.Q4_K_M.gguf"
+
+# Check if the model path exists and is a file
+if os.path.isfile(model_path):
+    print(f"Initializing Llama model from {model_path}")
+    llm = Llama(
+        model_path=model_path,
+        n_gpu_layers=50
+    )
+else:
+    raise ValueError(f"Model path does not exist or is not a file: {model_path}")
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")
@@ -21,15 +29,19 @@ summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 # Initialize LanguageTool
 tool = language_tool_python.LanguageTool('en-US')
 
-def generate_content(prompt, max_tokens=512, chunk_size=100, stop_sequences=["Q:", "\n"], context_window=512):
+def generate_content(prompt, max_tokens=512, chunk_size=100, stop_sequences=["\n"], context_window=512):
+    # Initialize response text and token counters
     response_text = ""
     total_tokens = 0
     prompt_tokens = len(prompt.split())
 
+    # Prepare the prompt by adding "Q:" at the beginning and "A:" at the end
+    formatted_prompt = f"Q: {prompt}\nA:"
+
+    # Truncate the prompt if it exceeds the context window
     if prompt_tokens >= context_window:
-        # Truncate the prompt to fit within the context window
         prompt_tokens = context_window - 1
-        prompt = ' '.join(prompt.split()[:prompt_tokens])
+        formatted_prompt = ' '.join(formatted_prompt.split()[:prompt_tokens])
 
     max_tokens = min(max_tokens, context_window - prompt_tokens)
 
@@ -40,8 +52,9 @@ def generate_content(prompt, max_tokens=512, chunk_size=100, stop_sequences=["Q:
 
         current_chunk_size = min(chunk_size, available_tokens)
 
+        # Generate a response chunk using the formatted prompt
         response = llm(
-            prompt + response_text,
+            formatted_prompt + response_text,
             max_tokens=current_chunk_size,
             stop=stop_sequences
         )
