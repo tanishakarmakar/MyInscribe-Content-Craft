@@ -22,10 +22,19 @@ def download_model_from_s3(bucket_name, model_key, download_path):
         os.makedirs(directory, exist_ok=True)
 
     # Download the file from S3
-    s3.download_file(bucket_name, model_key, download_path)
+    temp_download_path = download_path + ".temp"
+    s3.download_file(bucket_name, model_key, temp_download_path)
+
+    # Rename the downloaded file to the desired path
+    os.rename(temp_download_path, download_path)
+    
     print(f"Model downloaded from S3 bucket {bucket_name} to {download_path}")
     print(f"Model downloaded to: {download_path}")
 
+# Define your S3 bucket name, model key, and download path
+bucket_name = 'contentcraftbucket'
+model_key = 'models/7B/llama-2-7b-chat.Q4_K_M.gguf'
+download_path = './models/7B/llama-2-7b-chat.Q4_K_M.gguf'
 
-
-
+# Call the download function
+download_model_from_s3(bucket_name, model_key, download_path)
