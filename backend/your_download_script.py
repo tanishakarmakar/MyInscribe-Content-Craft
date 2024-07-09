@@ -16,20 +16,26 @@ def download_model_from_s3(bucket_name, model_key, download_path):
                       aws_secret_access_key=aws_secret_access_key, 
                       region_name=aws_region)
 
-    # Ensure the directory exists
+    # Ensure the parent directory exists
     directory = os.path.dirname(download_path)
     if not os.path.exists(directory):
         os.makedirs(directory, exist_ok=True)
 
-    # Download the file from S3
+    # Temporary path for download to avoid conflicts
     temp_download_path = download_path + ".temp"
-    s3.download_file(bucket_name, model_key, temp_download_path)
-
-    # Rename the downloaded file to the desired path
-    os.rename(temp_download_path, download_path)
     
-    print(f"Model downloaded from S3 bucket {bucket_name} to {download_path}")
-    print(f"Model downloaded to: {download_path}")
+    try:
+        # Download the file from S3
+        s3.download_file(bucket_name, model_key, temp_download_path)
+        # Rename the temporary file to the desired path
+        os.rename(temp_download_path, download_path)
+        print(f"Model downloaded from S3 bucket {bucket_name} to {download_path}")
+    except Exception as e:
+        print(f"Error downloading the model: {e}")
+        # Clean up temporary file in case of failure
+        if os.path.exists(temp_download_path):
+            os.remove(temp_download_path)
+        raise
 
 # Define your S3 bucket name, model key, and download path
 bucket_name = 'contentcraftbucket'
