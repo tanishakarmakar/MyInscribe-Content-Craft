@@ -7,18 +7,30 @@ import language_tool_python
 from llama_cpp import Llama
 import os
 
-# Define the model path
-model_path = "./models/7B/llama-2-7b-chat.Q4_K_M.gguf"
+# Path to the model directory
+model_dir = './models/7B/'
 
-# Check if the model path exists and is a file
-if os.path.isfile(model_path):
-    print(f"Initializing Llama model from {model_path}")
-    llm = Llama(
-        model_path=model_path,
-        n_gpu_layers=50
-    )
-else:
-    raise ValueError(f"Model path does not exist or is not a file: {model_path}")
+# List all files in the directory
+files = os.listdir(model_dir)
+print("Files in the directory:", files)
+
+# Assuming the correct file name is the one with the suffix
+correct_model_path = None
+for file in files:
+    if file.startswith("llama-2-7b-chat.Q4_K_M.gguf"):
+        correct_model_path = os.path.join(model_dir, file)
+        break
+
+if correct_model_path is None:
+    raise ValueError("Model file not found in the directory.")
+
+print(f"Using model file: {correct_model_path}")
+
+# Initialize Llama model
+llm = Llama(
+    model_path=correct_model_path,
+    n_gpu_layers=50
+)
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")
