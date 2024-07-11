@@ -110,6 +110,7 @@ textstat==0.7.3
 tf_keras==2.16.0
 thinc==8.2.3
 tokenizers==0.19.1
+torch==2.0.1
 tqdm==4.66.4
 transformers==4.41.2
 typer==0.9.4
