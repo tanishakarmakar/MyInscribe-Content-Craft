@@ -33,14 +33,6 @@ def create_app():
     from .routes import main  # Import the blueprint
     app.register_blueprint(main)  # Register the blueprint
 
-    @app.route('/')
-    def serve():
-        return send_from_directory(app.static_folder, 'index.html')
-
-    @app.errorhandler(404)
-    def not_found(e):
-        return send_from_directory(app.static_folder, 'index.html')
-
     with app.app_context():
         db.create_all()
 
