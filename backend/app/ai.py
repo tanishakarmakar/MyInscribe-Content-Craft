@@ -18,7 +18,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 nlp = spacy.load("en_core_web_sm")
 
 # Initialize transformers pipeline for summarization
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn", framework="pt")
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 # Initialize LanguageTool
 tool = language_tool_python.LanguageTool('en-US')
