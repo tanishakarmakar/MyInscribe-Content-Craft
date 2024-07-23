@@ -5,7 +5,6 @@ import { FaHome, FaSignOutAlt } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles.css';
 
-
 function ContentGenerator() {
   const navigate = useNavigate();
   const [prompt, setPrompt] = useState('');
@@ -24,6 +23,7 @@ function ContentGenerator() {
       setError('Error generating content');
     }
   };
+
   const openNav = () => {
     document.getElementById("mySidenav").style.width = "250px";
   };
@@ -31,7 +31,8 @@ function ContentGenerator() {
   const closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
   };
-   const handleLogout = () => {
+
+  const handleLogout = () => {
     // Remove the token from localStorage (or wherever it is stored)
     localStorage.removeItem('access_token');
     // Redirect to login page
@@ -44,45 +45,45 @@ function ContentGenerator() {
         <title>ContentCraft - Content Generator</title>
       </Helmet>
       <div id="mySidenav" className="sidenav">
-        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+        <button className="closebtn" onClick={closeNav}>&times;</button>
         <ul>
-        <li><Link to="/about"><FaHome style={{ marginRight: '8px' }} />Home</Link></li>
-        <br/>
-        <li><Link to="/generate">Content Generation</Link></li>
-        <br/>
-        <li><Link to="/optimize">Content Optimization</Link></li>
-        <br/>
-        <li><Link to="/workflow">Content Workflow</Link></li>
-        <br />
-          <li><a href="#" onClick={handleLogout}><FaSignOutAlt style={{ marginRight: '8px' }} />Logout</a></li>
+          <li><Link to="/about"><FaHome style={{ marginRight: '8px' }} />Home</Link></li>
+          <br/>
+          <li><Link to="/generate">Content Generation</Link></li>
+          <br/>
+          <li><Link to="/optimize">Content Optimization</Link></li>
+          <br/>
+          <li><Link to="/workflow">Content Workflow</Link></li>
+          <br />
+          <li><button onClick={handleLogout} style={{ backgroundColor: 'transparent', border: 'none', color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}><FaSignOutAlt style={{ marginRight: '8px' }} />Logout</button></li>
         </ul>
-      
       </div>
       <span style={{ fontSize: "30px", cursor: "pointer", marginLeft: "20px", marginTop: "10px"}} onClick={openNav}>&#9776;</span>
       <div className="optimize">
-      <h1>Content Generator</h1>
-      <center>
-      <textarea
-        placeholder="Enter prompt in this format: Q: */Write your prompt/* A:"
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        rows="10"
-        cols="50"
-      />
-      <br/>
-      <input
-        type="number"
-        placeholder="Max tokens"
-        value={maxTokens}
-        onChange={(e) => setMaxTokens(e.target.value)}
-      /> &nbsp;
-      <button onClick={handleGenerate}>Generate</button> </center>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div>
-        <h2>Generated Content:</h2>
-        <p>{content}</p>
+        <h1>Content Generator</h1>
+        <center>
+          <textarea
+            placeholder="Enter your prompt here."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            rows="10"
+            cols="50"
+          />
+          <br/>
+          <input
+            type="number"
+            placeholder="Max tokens"
+            value={maxTokens}
+            onChange={(e) => setMaxTokens(e.target.value)}
+          /> &nbsp;
+          <button onClick={handleGenerate}>Generate</button> 
+        </center>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div>
+          <h2>Generated Content:</h2>
+          <p>{content}</p>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
