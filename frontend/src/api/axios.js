@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://35.175.132.213/api' //'http://localhost:5000', // Updated base URL
+  baseURL: 'http://35.175.132.213/' //'http://localhost:5000', // Updated base URL
 });
 
 instance.interceptors.request.use(
