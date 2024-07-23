@@ -62,6 +62,7 @@ function WorkflowManager() {
 
       alert('Task updated successfully');
       setSelectedFile(null); // Clear the selected file after upload
+      setError(null); // Clear error after successful update
     } catch (error) {
       setError(error.response?.data?.message || 'Error updating task');
       console.error('Error updating task', error);
@@ -220,11 +221,13 @@ function WorkflowManager() {
                   /> &nbsp;
                   <button onClick={() => handleSubmitFeedback(task.id)}>Submit Feedback</button>
                 </div>
-                {task.feedback && (
+                {task.feedback && task.feedback.length > 0 && (
                   <div className="feedback-list">
-                    <h5>Feedbacks:</h5>
-                    {task.feedback.map(fb => (
-                      <i> <p key={fb.id}><strong>{fb.username}:</strong> {fb.feedback_text}</p></i>
+                    <h4>Feedback:</h4>
+                    {task.feedback.map((feedback, index) => (
+                      <div key={index} className="feedback-item">
+                        <p>{feedback}</p>
+                      </div>
                     ))}
                   </div>
                 )}
