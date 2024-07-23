@@ -130,7 +130,7 @@ function WorkflowManager() {
         <title>ContentCraft | Workflow Manager</title>
       </Helmet>
       <div id="mySidenav" className="sidenav">
-        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+        <button className="closebtn" onClick={closeNav}>&times;</button>
         <ul>
           <li><Link to="/about"><FaHome style={{ marginRight: '8px' }} />Home</Link></li>
           <br />
@@ -138,9 +138,7 @@ function WorkflowManager() {
           <br />
           <li><Link to="/optimize">Content Optimization</Link></li>
           <br />
-          <li><Link to="/workflow">Content Workflow</Link></li>
-          <br />
-          <li><a href="#" onClick={handleLogout}><FaSignOutAlt style={{ marginRight: '8px' }} />Logout</a></li>
+          <li><button onClick={handleLogout}><FaSignOutAlt style={{ marginRight: '8px' }} />Logout</button></li>
         </ul>
       </div>
       <span style={{ fontSize: "30px", cursor: "pointer", marginLeft: "20px", marginTop: "10px" }} onClick={openNav}>&#9776;</span>
@@ -149,7 +147,6 @@ function WorkflowManager() {
         {error && <div className="error-message">{error}</div>}
         <div className="new-task">
           <h2>Create New Task</h2>
-         
           <input
             type="text"
             placeholder="Title"
@@ -179,7 +176,6 @@ function WorkflowManager() {
           ) : (
             tasks.map(task => (
               <div key={task.id} className="taskitem">
-                
                 <h3>{task.title}</h3>
                 <p>{task.description}</p>
                 <p>Assigned to: {task.assigned_to}</p>
